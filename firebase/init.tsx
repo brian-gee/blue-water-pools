@@ -6,6 +6,9 @@ import {
   doc,
   addDoc,
   deleteDoc,
+  query,
+  orderBy,
+  endAt,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -19,9 +22,9 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-export const dbRef = collection(db, "customers");
+export const customerRef = collection(db, "customers");
 
 // // Get customers
 // export const getCustomer = async () => {
@@ -39,7 +42,7 @@ export const addCustomer = (
   address: string,
   invoice: number
 ) => {
-  addDoc(dbRef, {
+  addDoc(customerRef, {
     firstName: firstName,
     lastName: lastName,
     email: email,
@@ -50,6 +53,9 @@ export const addCustomer = (
 
 // // Delete customer
 // export const deleteCustomer = (id: string) => {
-//   const docRef = doc(db, "customers", id);
-//   deleteDoc(docRef);
+//   const customerRef = doc(db, "customers", id);
+//   deleteDoc(customerRef);
 // };
+
+// test query
+const q = query(customerRef, orderBy("createdAt"), endAt(1000000));

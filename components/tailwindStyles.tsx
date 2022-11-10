@@ -1,0 +1,40 @@
+export const tailwindStyles = {
+  btn: [
+    "px-6",
+    "py-2.5",
+    "bg-blue-600",
+    "text-white",
+    "leading-tight",
+    "rounded",
+    "shadow-md",
+    "over:bg-blue-700",
+    "hover:shadow-lg",
+    "focus:bg-blue-700",
+    "focus:shadow-lg",
+    "focus:outline-none",
+    "focus:ring-0",
+    "active:bg-blue-800",
+    "active:shadow-lg",
+    "transition duration-150",
+    "ease-in-out",
+  ].join(" "),
+
+  tableRowFirst: [].join(" "),
+
+  tableRowSecond: [].join(" "),
+
+  table: [
+    "flex",
+    "flex-col",
+    "overflow",
+    "overflow-x-auto",
+    "sm:-mx-6",
+    "lg:-mx-8",
+    "py-2",
+    "inline-block",
+    "min-w-full",
+    "sm:px-6",
+    "lg:px-8",
+    "overflow-hidden",
+  ].join(""),
+};

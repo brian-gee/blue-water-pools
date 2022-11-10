@@ -1,24 +1,27 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+// import styles from "../styles/Home.module.css";
+import { tailwindStyles } from "../components/tailwindStyles";
 import { useEffect, useState } from "react";
-import { db, addCustomer } from "../components/firestore";
+
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+
+// DB
+import { db, app, customerRef, addCustomer } from "../firebase/init";
 import { collection, getDocs } from "firebase/firestore";
 
-export default function Home() {
-  const [users, setUsers] = useState([]);
-  const usersCollectionRef = collection(db, "customers");
+// Auth
+import { getAuth, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
+const provider = new GoogleAuthProvider();
+const auth = getAuth(app);
 
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getUsers();
-  });
+export default function Home() {
+  const [user] = useAuthState(auth);
 
   return (
-    <div className={styles.container}>
+    <div className="">
+      {/* Header */}
       <Head>
         <title>SK Cleaning</title>
         <meta
@@ -28,33 +31,92 @@ export default function Home() {
         <link rel="icon" href="../public/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <div>
-          {users.map((customer) => {
-            return (
-              <div>
-                {" "}
-                <h1>Name: {customer.firstName}</h1>
-                <h1>Name: {customer.lastName}</h1>
-                <br></br>
-              </div>
-            );
-          })}
-        </div>
+      {/* Body */}
+      <main className="px-10 h-screen">
+        <nav className="py-10 mb-12 flex justify-between">
+          <h1 className="text-xl">SK Cleaning</h1>
+          <ul className="flex items-center">
+            <li>
+              <SignOut />
+            </li>
+          </ul>
+        </nav>
+
+        <div className="p-10">{user ? <Table /> : <SignIn />}</div>
       </main>
 
-      <footer className={styles.footer}>
+      {/* Footer */}
+      <footer className="flex justify-center p-10 text-xl">
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+          Developed by Brian Geertsma
         </a>
       </footer>
     </div>
+  );
+}
+
+// Sign in user using google account
+function SignIn() {
+  const signInWithGoogle = () => {
+    signInWithRedirect(auth, provider);
+  };
+
+  return (
+    <>
+      <div className="pb-20">
+        <h1 className="lg:text-7xl md:text-5xl sm:text-3xl ">
+          Welcome to Sk Cleaning
+        </h1>
+      </div>
+      <button className={tailwindStyles.btn} onClick={signInWithGoogle}>
+        Sign in with Google
+      </button>
+    </>
+  );
+}
+
+// Sign out of user's google account
+function SignOut() {
+  return (
+    auth.currentUser && (
+      <button className={tailwindStyles.btn} onClick={() => auth.signOut()}>
+        Sign Out
+      </button>
+    )
+  );
+}
+
+// This is where I'll put all the user data
+function Table() {
+  return (
+    <>
+      <div className={tailwindStyles.table}>
+        <table className="min-w-full">
+          <thead className="bg-gray-500">
+            <tr>
+              <th className="p-3">ID</th>
+              <th>First</th>
+              <th>Last</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Invoice</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
