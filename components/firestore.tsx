@@ -9,30 +9,27 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.APIKEY,
-  authDomain: process.env.AUTHDOMAIN,
-  databaseURL: process.env.DATABASEURL,
-  projectId: process.env.PROJECTID,
-  storageBucket: process.env.STORAGEBUCKET,
-  messagingSenderId: process.env.MESSAGINGSENDERID,
-  appId: process.env.APPID,
-  measurementId: process.env.MEASUREMENTID,
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  databaseURL: process.env.NEXT_PUBLIC_DATA_BASEURL,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-const dbRef = collection(db, "customers");
+export const dbRef = collection(db, "customers");
 
-// Get customers
-export const getCustomer = () => {
-  getDocs(dbRef).then((snapshot) => {
-    let customers: any = [];
-    snapshot.docs.forEach((e) => {
-      customers.push({ ...e.data(), id: e.id });
-    });
-    console.log(customers);
-  });
-};
+// // Get customers
+// export const getCustomer = async () => {
+//   const querySnapshot = await getDocs(collection(db, "customers"));
+//   querySnapshot.forEach((doc) => {
+//     return `${doc.id} => ${doc.data().firstName}`;
+//   });
+// };
 
 // Add customer
 export const addCustomer = (
@@ -51,8 +48,8 @@ export const addCustomer = (
   });
 };
 
-// Delete customer
-export const deleteCustomer = (id: string) => {
-  const docRef = doc(db, "customers", id);
-  deleteDoc(docRef);
-};
+// // Delete customer
+// export const deleteCustomer = (id: string) => {
+//   const docRef = doc(db, "customers", id);
+//   deleteDoc(docRef);
+// };
