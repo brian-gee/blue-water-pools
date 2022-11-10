@@ -26,14 +26,6 @@ export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const customerRef = collection(db, "customers");
 
-// // Get customers
-// export const getCustomer = async () => {
-//   const querySnapshot = await getDocs(collection(db, "customers"));
-//   querySnapshot.forEach((doc) => {
-//     return `${doc.id} => ${doc.data().firstName}`;
-//   });
-// };
-
 // Add customer
 export const addCustomer = (
   firstName: string,
@@ -52,7 +44,7 @@ export const addCustomer = (
 };
 
 // // Delete customer
-// export const deleteCustomer = (id: string) => {
-//   const customerRef = doc(db, "customers", id);
-//   deleteDoc(customerRef);
-// };
+export const deleteCustomer = (id: string) => {
+  const customerRef = doc(db, "customers", id);
+  deleteDoc(customerRef);
+};

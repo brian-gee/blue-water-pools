@@ -16,7 +16,6 @@ export default function Home() {
 
   return (
     <div className="">
-      {/* Header */}
       <Head>
         <title>SK Cleaning</title>
         <meta
@@ -26,21 +25,9 @@ export default function Home() {
         <link rel="icon" href="../public/favicon.ico" />
       </Head>
 
-      {/* Body */}
       <main className="px-10 h-screen">
         <div className="p-10">{user ? <Table /> : <SignIn />}</div>
       </main>
-
-      {/* Footer */}
-      <footer className="flex justify-center p-10 text-xl">
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Developed by Brian Geertsma
-        </a>
-      </footer>
     </div>
   );
 }
