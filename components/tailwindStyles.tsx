@@ -19,10 +19,6 @@ export const tailwindStyles = {
     "ease-in-out",
   ].join(" "),
 
-  tableRowFirst: [].join(" "),
-
-  tableRowSecond: [].join(" "),
-
   table: [
     "flex",
     "flex-col",
