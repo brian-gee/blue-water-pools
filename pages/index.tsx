@@ -75,14 +75,16 @@ function SignIn() {
 
   return (
     <>
-      <div className="pb-20">
+      <div className="pb-20 flex justify-center">
         <h1 className="lg:text-7xl md:text-5xl sm:text-3xl ">
           Welcome to Sk Cleaning
         </h1>
       </div>
-      <button className={tailwindStyles.btn} onClick={signInWithGoogle}>
-        Sign in with Google
-      </button>
+      <div className="flex justify-center">
+        <button className={tailwindStyles.btn} onClick={signInWithGoogle}>
+          Sign in with Google
+        </button>
+      </div>
     </>
   );
 }
@@ -91,7 +93,7 @@ function SignIn() {
 function SignOut() {
   return (
     auth.currentUser && (
-      <button className={tailwindStyles.btn} onClick={() => auth.signOut()}>
+      <button className="hover:text-blue-300" onClick={() => auth.signOut()}>
         Sign Out
       </button>
     )
@@ -130,7 +132,7 @@ function Table() {
             {customers.map((customer) => {
               return (
                 <tr className="p-3 bg-gray-500">
-                  <th>{customer.id}</th>
+                  <th key={customer.id}>{customer.id}</th>
                   <th>{customer.firstName}</th>
                   <th>{customer.lastName}</th>
                   <th>{customer.email}</th>
