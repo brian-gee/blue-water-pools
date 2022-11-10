@@ -9,7 +9,15 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 
 // DB
 import { db, app, customerRef, addCustomer } from "../firebase/init";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  query,
+  orderBy,
+  endAt,
+  onSnapshot,
+  doc,
+} from "firebase/firestore";
 
 // Auth
 import { getAuth, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
@@ -92,11 +100,22 @@ function SignOut() {
 
 // This is where I'll put all the user data
 function Table() {
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+    const getCustomers = async () => {
+      const data = await getDocs(customerRef);
+      setCustomers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getCustomers();
+  }, []);
+
   return (
     <>
       <div className={tailwindStyles.table}>
         <table className="min-w-full">
-          <thead className="bg-gray-500">
+          <thead className="bg-gray-700">
             <tr>
               <th className="p-3">ID</th>
               <th>First</th>
@@ -108,12 +127,18 @@ function Table() {
           </thead>
 
           <tbody>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
+            {customers.map((customer) => {
+              return (
+                <tr className="p-3 bg-gray-500">
+                  <th>{customer.id}</th>
+                  <th>{customer.firstName}</th>
+                  <th>{customer.lastName}</th>
+                  <th>{customer.email}</th>
+                  <th>{customer.address}</th>
+                  <th>{customer.invoice}</th>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
