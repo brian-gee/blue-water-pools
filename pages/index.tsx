@@ -1,31 +1,18 @@
 import Head from "next/head";
-import Link from "next/link";
-// import styles from "../styles/Home.module.css";
+import SignIn from "../components/signIn";
+// import Table from "../components/table";
 import { tailwindStyles } from "../components/tailwindStyles";
 import { useEffect, useState } from "react";
+import { AuthContextProvider } from "../components/googleAuth";
 
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
 // DB
 import { db, app, customerRef, addCustomer } from "../firebase/init";
-import {
-  collection,
-  getDocs,
-  query,
-  orderBy,
-  endAt,
-  onSnapshot,
-  doc,
-} from "firebase/firestore";
-
-// Auth
-import { getAuth, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
-const provider = new GoogleAuthProvider();
-const auth = getAuth(app);
+import { getDocs } from "firebase/firestore";
 
 export default function Home() {
-  const [user] = useAuthState(auth);
+  const { user } = AuthContextProvider();
 
   return (
     <div className="">
@@ -41,19 +28,6 @@ export default function Home() {
 
       {/* Body */}
       <main className="px-10 h-screen">
-        <nav className="py-10 mb-12 flex justify-between">
-          <h1 className="text-xl">SK Cleaning</h1>
-          <ul className="flex items-center ">
-            <Link href="/admin">
-              <li className="pr-4">{user ? "Add Customer" : ""}</li>
-            </Link>
-            <li className="pr-4">{user ? user.displayName : ""}</li>
-            <li>
-              <SignOut />
-            </li>
-          </ul>
-        </nav>
-
         <div className="p-10">{user ? <Table /> : <SignIn />}</div>
       </main>
 
@@ -68,39 +42,6 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  );
-}
-
-// Sign in user using google account
-function SignIn() {
-  const signInWithGoogle = () => {
-    signInWithRedirect(auth, provider);
-  };
-
-  return (
-    <>
-      <div className="pb-20 flex justify-center">
-        <h1 className="lg:text-7xl md:text-5xl sm:text-3xl ">
-          Welcome to Sk Cleaning
-        </h1>
-      </div>
-      <div className="flex justify-center">
-        <button className={tailwindStyles.btn} onClick={signInWithGoogle}>
-          Sign in with Google
-        </button>
-      </div>
-    </>
-  );
-}
-
-// Sign out of user's google account
-function SignOut() {
-  return (
-    auth.currentUser && (
-      <button className="hover:text-blue-300" onClick={() => auth.signOut()}>
-        Sign Out
-      </button>
-    )
   );
 }
 
