@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import Link from "next/link";
 // import styles from "../styles/Home.module.css";
 import { tailwindStyles } from "../components/tailwindStyles";
 import { useEffect, useState } from "react";
@@ -43,7 +43,11 @@ export default function Home() {
       <main className="px-10 h-screen">
         <nav className="py-10 mb-12 flex justify-between">
           <h1 className="text-xl">SK Cleaning</h1>
-          <ul className="flex items-center">
+          <ul className="flex items-center ">
+            <Link href="/admin">
+              <li className="pr-4">{user ? "Add Customer" : ""}</li>
+            </Link>
+            <li className="pr-4">{user ? user.displayName : ""}</li>
             <li>
               <SignOut />
             </li>

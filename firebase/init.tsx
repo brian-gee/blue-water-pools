@@ -56,6 +56,3 @@ export const addCustomer = (
 //   const customerRef = doc(db, "customers", id);
 //   deleteDoc(customerRef);
 // };
-
-// test query
-const q = query(customerRef, orderBy("createdAt"), endAt(1000000));
