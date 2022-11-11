@@ -8,7 +8,13 @@ import { AuthContextProvider } from "../components/googleAuth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
 // DB
-import { db, app, customerRef, addCustomer } from "../firebase/init";
+import {
+  db,
+  app,
+  customerRef,
+  addCustomer,
+  deleteCustomer,
+} from "../firebase/init";
 import { getDocs } from "firebase/firestore";
 
 export default function Home() {
@@ -35,6 +41,11 @@ export default function Home() {
 // This is where I'll put all the user data
 function Table() {
   const [customers, setCustomers] = useState([]);
+  const [test, setTest] = useState("");
+
+  useEffect(() => {
+    console.log("we ran it");
+  });
 
   useEffect(() => {
     const getCustomers = async () => {
@@ -57,6 +68,7 @@ function Table() {
               <th>Email</th>
               <th>Address</th>
               <th>Invoice</th>
+              <th>Delete Customer</th>
             </tr>
           </thead>
 
@@ -70,6 +82,9 @@ function Table() {
                   <th>{customer.email}</th>
                   <th>{customer.address}</th>
                   <th>{customer.invoice}</th>
+                  <th>
+                    <button onClick="">Click here</button>
+                  </th>
                 </tr>
               );
             })}
