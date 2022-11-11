@@ -21,32 +21,32 @@ export default function Admin() {
           {/* First Name */}
           <label className="mb-2" htmlFor="firstName">
             First Name:{" "}
+            <input className="mb-2" type="text" name="firstName" required />
           </label>
-          <input className="mb-2" type="text" name="firstName" required />
 
           {/* Last Name */}
           <label className="mb-2" htmlFor="lastName">
             Last Name:{" "}
+            <input className="mb-2" type="text" name="firstName" required />
           </label>
-          <input className="mb-2" type="text" name="firstName" required />
 
           {/* Email */}
           <label className="mb-2" htmlFor="email">
             Email:{" "}
+            <input className="mb-2" type="text" name="firstName" required />
           </label>
-          <input className="mb-2" type="text" name="firstName" required />
 
           {/* Address */}
           <label className="mb-2" htmlFor="address">
             Address:{" "}
+            <input className="mb-2" type="text" name="address" required />
           </label>
-          <input className="mb-2" type="text" name="address" required />
 
           {/* Invoice */}
           <label className="mb-2" htmlFor="title">
             Invoice
+            <input className="mb-2" type="number" name="invoice" required />
           </label>
-          <input className="mb-2" type="number" name="invoice" required />
         </form>
       </div>
       <div className="flex justify-center pt-10">

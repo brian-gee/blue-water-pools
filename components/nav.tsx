@@ -12,8 +12,8 @@ export default function Nav() {
         <Link href="/">
           <li className="pr-4">Home</li>
         </Link>
-        <Link href="/admin">
-          <li className="pr-4">{user ? "Add Customer" : ""}</li>
+        <Link href="/manage">
+          <li className="pr-4">{user ? "Manage Customers" : ""}</li>
         </Link>
         <li className="pr-4">{user ? user.displayName : ""}</li>
         <li>
