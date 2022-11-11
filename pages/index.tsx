@@ -44,10 +44,6 @@ function Table() {
   const [test, setTest] = useState("");
 
   useEffect(() => {
-    console.log("we ran it");
-  });
-
-  useEffect(() => {
     const getCustomers = async () => {
       const data = await getDocs(customerRef);
       setCustomers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -73,17 +69,17 @@ function Table() {
           </thead>
 
           <tbody>
-            {customers.map((customer) => {
+            {customers.map((customer, i) => {
               return (
-                <tr className="p-3 bg-gray-500">
-                  <th key={customer.id}>{customer.id}</th>
+                <tr key={i} className="p-3 bg-gray-500">
+                  <th>{customer.id}</th>
                   <th>{customer.firstName}</th>
                   <th>{customer.lastName}</th>
                   <th>{customer.email}</th>
                   <th>{customer.address}</th>
                   <th>{customer.invoice}</th>
                   <th>
-                    <button onClick="">Click here</button>
+                    <button>Click here</button>
                   </th>
                 </tr>
               );
