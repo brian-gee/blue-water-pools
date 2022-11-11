@@ -73,82 +73,14 @@ export default function Manage() {
               onChange={(e) => setLastName(e.target.value)}
             />
           </div>
-        </form>
-        <div className="flex justify-center pt-10">
-          <button onClick={handleAdd} className={tailwindStyles.btn}>
-            Add User
-          </button>
-        </div>
-      </div>
-
-      <div className="px-10 flex justify-center">
-        <form className="grid grid-flow-row-min grid-cols-2 content-center">
-          {/* First Name */}
-          <label className="mb-2" htmlFor="firstName">
-            First Name:{" "}
-            <input
-              className="mb-2"
-              type="text"
-              name="firstName"
-              required
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </label>
-
-          {/* Last Name */}
-          <label className="mb-2" htmlFor="lastName">
-            Last Name:{" "}
-            <input
-              className="mb-2"
-              type="text"
-              name="lastName"
-              required
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </label>
-
-          {/* Email */}
-          <label className="mb-2" htmlFor="email">
-            Email:{" "}
-            <input
-              className="mb-2"
-              type="text"
-              name="email"
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-
-          {/* Address */}
-          <label className="mb-2" htmlFor="address">
-            Address:{" "}
-            <input
-              className="mb-2"
-              type="text"
-              name="address"
-              required
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </label>
-
-          {/* Invoice */}
-          <label className="mb-2" htmlFor="invoice">
-            Invoice
-            <input
-              className="mb-2"
-              type="number"
-              name="invoice"
-              required
-              onChange={(e) => setInvoice(parseFloat(e.target.value))}
-            />
-          </label>
+          <div className="">
+            <button onClick={handleAdd} className={tailwindStyles.btn}>
+              Create customer
+            </button>
+          </div>
         </form>
       </div>
-      <div className="flex justify-center pt-10">
-        <button onClick={handleAdd} className={tailwindStyles.btn}>
-          Add User
-        </button>
-      </div>
+
       <div className="px-10 pt-20 flex justify-center">
         <form>
           <label className="mb-2" htmlFor="id">
