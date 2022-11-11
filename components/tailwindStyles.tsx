@@ -1,5 +1,6 @@
 export const tailwindStyles = {
   btn: [
+    "w-full",
     "px-6",
     "py-2.5",
     "bg-blue-600",
@@ -33,4 +34,22 @@ export const tailwindStyles = {
     "lg:px-8",
     "overflow-hidden",
   ].join(""),
+
+  formItem: [
+    "form-control",
+    "block",
+    "w-full",
+    "px-5",
+    "py-2",
+    "text-base",
+    "text-normal",
+    "border",
+    "border-solid",
+    "border-gray-300",
+    "rounded",
+    "transition",
+    "ease-in-out",
+    "focus:border-blue-600",
+    "focus:outline-none",
+  ].join(" "),
 };

@@ -3,137 +3,82 @@ import { addCustomer, deleteCustomer } from "../firebase/init";
 import { tailwindStyles } from "../components/tailwindStyles";
 
 export default function Manage() {
-  const [firstName, setFirstName] = useState("empty");
-  const [lastName, setLastName] = useState("empty");
-  const [email, setEmail] = useState("empty");
-  const [address, setAddress] = useState("empty");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
   const [invoice, setInvoice] = useState(0);
   let [id, setId] = useState("");
 
   const handleAdd = () => {
     addCustomer(firstName, lastName, email, address, invoice);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setAddress("");
+    setInvoice(0);
+    alert(firstName + " " + lastName + " has been created.");
   };
 
   const handleDelete = () => {
     deleteCustomer(id);
     setId("");
-    alert("User with ID: " + id + " has been deleted.");
+    alert("Customer with ID: " + id + " has been deleted.");
   };
 
   return (
     <div className="h-screen">
-      <div className="flex p-6 rounded-lg shadow-lg max-w-md justify-center">
-        <form>
+      <div className="flex justify-center">
+        <form className="rounded-lg shadow-lg p-8">
           <div className="grid grid-cols-2 gap-4">
-            <div className="form-group mb-6">
+            <div className="form-group mb-5">
               <input
                 type="text"
-                className="form-control
-                block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-              text-gray-700
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                id="exampleInput123"
-                aria-describedby="emailHelp123"
+                className={tailwindStyles.formItem}
                 placeholder="First name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
-            <div className="form-group mb-6">
+            <div className="form-group mb-5">
               <input
                 type="text"
-                className="form-control
-                block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-              text-gray-700
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                id="exampleInput124"
-                aria-describedby="emailHelp124"
+                className={tailwindStyles.formItem}
                 placeholder="Last name"
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
           </div>
-          <div className="form-group mb-6">
+          <div className="form-group mb-5">
+            <input
+              type="address"
+              className={tailwindStyles.formItem}
+              placeholder="Address"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-group mb-5">
             <input
               type="email"
-              className="form-control block
-              w-full
-              px-3
-              py-1.5
-              text-base
-              font-normal
-            text-gray-700
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="exampleInput125"
-              placeholder="Email address"
+              className={tailwindStyles.formItem}
+              placeholder="Email"
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
-          <div className="form-group mb-6">
+          <div className="form-group mb-5">
             <input
-              type="password"
-              className="form-control block
-              w-full
-              px-3
-              py-1.5
-              text-base
-              font-normal
-            text-gray-700
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="exampleInput126"
-              placeholder="Password"
+              type="number"
+              className={tailwindStyles.formItem}
+              placeholder="Invoice"
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
-          <button
-            type="submit"
-            className="
-            w-full
-            px-6
-            py-2.5
-          bg-blue-600
-          text-white
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            rounded
-            shadow-md
-          hover:bg-blue-700 hover:shadow-lg
-          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-          active:bg-blue-800 active:shadow-lg
-            transition
-            duration-150
-            ease-in-out"
-          >
-            Sign up
-          </button>
         </form>
+        <div className="flex justify-center pt-10">
+          <button onClick={handleAdd} className={tailwindStyles.btn}>
+            Add User
+          </button>
+        </div>
       </div>
 
       <div className="px-10 flex justify-center">
