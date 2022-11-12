@@ -81,25 +81,22 @@ export default function Manage() {
         </form>
       </div>
 
-      <div className="px-10 pt-20 flex justify-center">
-        <form>
-          <label className="mb-2" htmlFor="id">
-            ID:{" "}
+      <div className="pt-10 flex justify-center">
+        <form className="shadow-lg p-10">
+          <div className="form-group mb-5">
             <input
-              className="mb-2"
               type="text"
-              name="id"
-              required
-              value={id}
+              className={tailwindStyles.formItem}
+              placeholder="ID"
               onChange={(e) => setId(e.target.value)}
             />
-          </label>
+          </div>
+          <div className="">
+            <button onClick={handleDelete} className={tailwindStyles.btn}>
+              Delete customer
+            </button>
+          </div>
         </form>
-      </div>
-      <div className="px-10 flex justify-center">
-        <button onClick={handleDelete} className={tailwindStyles.btn}>
-          Delete User
-        </button>
       </div>
     </div>
   );
