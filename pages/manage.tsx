@@ -32,7 +32,10 @@ export default function Manage() {
     <div className="h-screen">
       <div className="flex justify-center">
         {/* Add Customer Form */}
-        <form className="rounded-lg shadow-lg p-8">
+        <form className="rounded-lg shadow-lg p-8 bg-blue-900">
+          <h1 className="text-2xl flex justify-center pb-5">
+            Add a new customer
+          </h1>
           <div className="grid grid-cols-2 gap-4">
             <div className="form-group mb-5">
               <input
@@ -86,7 +89,10 @@ export default function Manage() {
 
       {/* Delete customer form */}
       <div className="pt-10 flex justify-center">
-        <form className="shadow-lg p-10">
+        <form className="shadow-lg p-10 bg-blue-900">
+          <h1 className="text-2xl flex justify-center pb-5">
+            Delete a customer
+          </h1>
           <div className="form-group mb-5">
             <input
               type="text"
