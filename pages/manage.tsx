@@ -10,6 +10,7 @@ export default function Manage() {
   const [invoice, setInvoice] = useState(0);
   let [id, setId] = useState("");
 
+  // Add customer to firestore using form data then reset
   const handleAdd = () => {
     addCustomer(firstName, lastName, email, address, invoice);
     setFirstName("");
@@ -20,6 +21,7 @@ export default function Manage() {
     alert(firstName + " " + lastName + " has been created.");
   };
 
+  // Delete customer from firestore using form data then reset
   const handleDelete = () => {
     deleteCustomer(id);
     setId("");
@@ -29,6 +31,7 @@ export default function Manage() {
   return (
     <div className="h-screen">
       <div className="flex justify-center">
+        {/* Add Customer Form */}
         <form className="rounded-lg shadow-lg p-8">
           <div className="grid grid-cols-2 gap-4">
             <div className="form-group mb-5">
@@ -81,6 +84,7 @@ export default function Manage() {
         </form>
       </div>
 
+      {/* Delete customer form */}
       <div className="pt-10 flex justify-center">
         <form className="shadow-lg p-10">
           <div className="form-group mb-5">
