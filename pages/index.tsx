@@ -56,7 +56,7 @@ function Table() {
     <>
       <div className={tailwindStyles.table}>
         <table className="min-w-full">
-          <thead className="bg-gray-700">
+          <thead className="bg-blue-700">
             <tr>
               <th className="p-3">ID</th>
               <th>First</th>
