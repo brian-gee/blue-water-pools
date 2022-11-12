@@ -51,6 +51,7 @@ export default function Manage() {
                 type="text"
                 className={tailwindStyles.formItem}
                 placeholder="Last name"
+                value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
@@ -60,7 +61,8 @@ export default function Manage() {
               type="address"
               className={tailwindStyles.formItem}
               placeholder="Address"
-              onChange={(e) => setEmail(e.target.value)}
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </div>
           <div className="form-group mb-5">
@@ -68,7 +70,8 @@ export default function Manage() {
               type="email"
               className={tailwindStyles.formItem}
               placeholder="Email"
-              onChange={(e) => setLastName(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="form-group mb-5">
@@ -76,7 +79,8 @@ export default function Manage() {
               type="number"
               className={tailwindStyles.formItem}
               placeholder="Invoice"
-              onChange={(e) => setLastName(e.target.value)}
+              value={invoice}
+              onChange={(e) => setInvoice(parseInt(e.target.value))}
             />
           </div>
           <div className="">
@@ -98,6 +102,7 @@ export default function Manage() {
               type="text"
               className={tailwindStyles.formItem}
               placeholder="ID"
+              value={id}
               onChange={(e) => setId(e.target.value)}
             />
           </div>
