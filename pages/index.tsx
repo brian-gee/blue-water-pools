@@ -15,7 +15,7 @@ import {
   customerRef,
   addCustomer,
   deleteCustomer,
-} from "../firebase/init";
+} from "../firebase/initAuth";
 import { getDocs } from "firebase/firestore";
 
 export default function Home() {
@@ -43,6 +43,11 @@ export default function Home() {
 function Table() {
   const [customers, setCustomers] = useState([]);
   const [test, setTest] = useState("");
+
+  const dollarUS = Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
   useEffect(() => {
     const getCustomers = async () => {
@@ -74,11 +79,11 @@ function Table() {
               return (
                 <tr key={i} className="p-3 bg-gray-500">
                   <td>{customer.id}</td>
-                  <td>{customer.firstName}</td>
-                  <td>{customer.lastName}</td>
+                  <td>{customer.first_name}</td>
+                  <td>{customer.last_name}</td>
                   <td>{customer.email}</td>
                   <td>{customer.address}</td>
-                  <td>{customer.invoice}</td>
+                  <td>${dollarUS.format(customer.invoice)}</td>
                 </tr>
               );
             })}

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import { addCustomer, deleteCustomer } from "../firebase/init";
+import { addCustomer, deleteCustomer } from "../firebase/initAuth";
 import { tailwindStyles } from "../components/tailwindStyles";
 
 export default function Manage() {

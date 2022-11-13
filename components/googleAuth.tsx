@@ -1,5 +1,5 @@
 import { useAuthState } from "react-firebase-hooks/auth";
-import { app } from "../firebase/init";
+import { app } from "../firebase/initAuth";
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 
