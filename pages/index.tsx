@@ -44,10 +44,6 @@ function Table() {
   const [customers, setCustomers] = useState([]);
   const [test, setTest] = useState("");
 
-  const handleClick = (e) => {
-    alert(e.target.value);
-  };
-
   useEffect(() => {
     const getCustomers = async () => {
       const data = await getDocs(customerRef);
@@ -70,7 +66,6 @@ function Table() {
               <th>Email</th>
               <th>Address</th>
               <th>Invoice</th>
-              <th>Delete Customer</th>
             </tr>
           </thead>
 
@@ -78,15 +73,12 @@ function Table() {
             {customers.map((customer, i) => {
               return (
                 <tr key={i} className="p-3 bg-gray-500">
-                  <th>{customer.id}</th>
-                  <th>{customer.firstName}</th>
-                  <th>{customer.lastName}</th>
-                  <th>{customer.email}</th>
-                  <th>{customer.address}</th>
-                  <th>{customer.invoice}</th>
-                  <th>
-                    <button onClick={handleClick}>Click here</button>
-                  </th>
+                  <td>{customer.id}</td>
+                  <td>{customer.firstName}</td>
+                  <td>{customer.lastName}</td>
+                  <td>{customer.email}</td>
+                  <td>{customer.address}</td>
+                  <td>{customer.invoice}</td>
                 </tr>
               );
             })}
