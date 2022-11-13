@@ -1,16 +1,17 @@
-import { tailwindStyles } from "../components/tailwindStyles";
-import { useEffect, useState } from "react";
-// import CustomerTable from "../components/customerTable";
+import { tailwindStyles } from "./tailwindStyles";
+import { useEffect, useMemo, useState } from "react";
+import { useTable } from "react-table";
+import { COLUMNS } from "./columns";
 import { getDocs } from "firebase/firestore";
 import { customerRef } from "../firebase/initFirestore";
 
+const dollarUS = Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
+
 export default function CustomerTable() {
   const [customers, setCustomers] = useState([]);
-
-  const dollarUS = Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
 
   useEffect(() => {
     const getCustomers = async () => {
@@ -21,38 +22,45 @@ export default function CustomerTable() {
     getCustomers();
   }, []);
 
+  const columns = useMemo(() => COLUMNS, []);
+  const data = useMemo(() => customers, []);
+
+  const tableInstance = useTable({
+    columns,
+    data,
+  });
+
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    tableInstance;
+
   return (
     <>
-      {/* <CustomerTable /> */}
-      <div className={tailwindStyles.table}>
-        <table className="min-w-full">
-          <thead className="bg-blue-700">
-            <tr>
-              <th className="p-3">ID</th>
-              <th>First</th>
-              <th>Last</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Invoice</th>
+      <table {...getTableProps}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              ))}
+              <td></td>
             </tr>
-          </thead>
-
-          <tbody>
-            {customers.map((customer, i) => {
-              return (
-                <tr key={i} className="p-3 bg-gray-500">
-                  <td>{customer.id}</td>
-                  <td>{customer.first_name}</td>
-                  <td>{customer.last_name}</td>
-                  <td>{customer.email}</td>
-                  <td>{customer.address}</td>
-                  <td>{dollarUS.format(customer.invoice)}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </>
   );
 }
