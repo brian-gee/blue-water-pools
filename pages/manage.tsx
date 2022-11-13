@@ -8,24 +8,24 @@ export default function Manage() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [invoice, setInvoice] = useState(0);
-  let [id, setId] = useState("");
+  var [id, setId] = useState("");
 
   // Add customer to firestore using form data then reset
   const handleAdd = () => {
     addCustomer(firstName, lastName, email, address, invoice);
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setAddress("");
-    setInvoice(0);
-    alert(firstName + " " + lastName + " has been created.");
+    // setFirstName("");
+    // setLastName("");
+    // setEmail("");
+    // setAddress("");
+    // setInvoice(0);
+    // alert(firstName + " " + lastName + " has been created.");
   };
 
   // Delete customer from firestore using form data then reset
   const handleDelete = () => {
     deleteCustomer(id);
-    setId("");
-    alert("Customer with ID: " + id + " has been deleted.");
+    // setId("");
+    // alert("Customer with ID: " + id + " has been deleted.");
   };
 
   return (
