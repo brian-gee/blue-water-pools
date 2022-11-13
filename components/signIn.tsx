@@ -1,4 +1,4 @@
-import { AuthContextProvider } from "./googleAuth";
+import { AuthContextProvider } from "../firebase/initAuth";
 import { tailwindStyles } from "./tailwindStyles";
 
 export default function SignIn() {

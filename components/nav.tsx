@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AuthContextProvider } from "./googleAuth";
+import { AuthContextProvider } from "../firebase/initAuth";
 
 export default function Nav() {
   const { user, logOut } = AuthContextProvider();

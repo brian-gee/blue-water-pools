@@ -1,15 +1,11 @@
 import { initializeApp } from "firebase/app";
+import { useAuthState } from "react-firebase-hooks/auth";
 import {
-  getFirestore,
-  collection,
-  getDocs,
-  doc,
-  addDoc,
-  deleteDoc,
-  query,
-  orderBy,
-  endAt,
-} from "firebase/firestore";
+  GoogleAuthProvider,
+  signInWithRedirect,
+  signOut,
+  getAuth,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -23,28 +19,20 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const customerRef = collection(db, "customers");
 
-// Add customer
-export const addCustomer = (
-  firstName: string,
-  lastName: string,
-  email: string,
-  address: string,
-  invoice: number
-) => {
-  addDoc(customerRef, {
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-    address: address,
-    invoice: invoice,
-  });
-};
+const provider = new GoogleAuthProvider();
+const auth = getAuth(app);
 
-// // Delete customer
-export const deleteCustomer = (id: string) => {
-  const customerRef = doc(db, "customers", id);
-  deleteDoc(customerRef);
+export const AuthContextProvider = () => {
+  const [user] = useAuthState(auth);
+
+  const signInWithGoogle = () => {
+    signInWithRedirect(auth, provider);
+  };
+
+  const logOut = () => {
+    signOut(auth);
+  };
+
+  return { user, signInWithGoogle, logOut };
 };
