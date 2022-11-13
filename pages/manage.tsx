@@ -14,19 +14,11 @@ export default function Manage() {
   // Add customer to firestore using form data then reset
   const handleAdd = () => {
     addCustomer(firstName, lastName, email, address, invoice);
-    // setFirstName("");
-    // setLastName("");
-    // setEmail("");
-    // setAddress("");
-    // setInvoice(0);
-    // alert(firstName + " " + lastName + " has been created.");
   };
 
   // Delete customer from firestore using form data then reset
   const handleDelete = () => {
     deleteCustomer(id);
-    // setId("");
-    // alert("Customer with ID: " + id + " has been deleted.");
   };
 
   return (
