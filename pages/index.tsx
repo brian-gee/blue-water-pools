@@ -4,6 +4,7 @@ import SignIn from "../components/signIn";
 import { tailwindStyles } from "../components/tailwindStyles";
 import { useEffect, useState } from "react";
 import { AuthContextProvider } from "../components/googleAuth";
+import CustomerTable from "../components/customerTable";
 
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
@@ -43,6 +44,10 @@ function Table() {
   const [customers, setCustomers] = useState([]);
   const [test, setTest] = useState("");
 
+  const handleClick = (e) => {
+    alert(e.target.value);
+  };
+
   useEffect(() => {
     const getCustomers = async () => {
       const data = await getDocs(customerRef);
@@ -54,6 +59,7 @@ function Table() {
 
   return (
     <>
+      <CustomerTable />
       <div className={tailwindStyles.table}>
         <table className="min-w-full">
           <thead className="bg-blue-700">
@@ -79,7 +85,7 @@ function Table() {
                   <th>{customer.address}</th>
                   <th>{customer.invoice}</th>
                   <th>
-                    <button>Click here</button>
+                    <button onClick={handleClick}>Click here</button>
                   </th>
                 </tr>
               );

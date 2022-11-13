@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState, useEffect } from "react";
 import { addCustomer, deleteCustomer } from "../firebase/init";
 import { tailwindStyles } from "../components/tailwindStyles";
@@ -30,6 +31,15 @@ export default function Manage() {
 
   return (
     <div className="h-screen">
+      <Head>
+        <title>SK Cleaning</title>
+        <meta
+          name="description"
+          content="SK Cleaning, the pool service for you"
+        />
+        <link rel="icon" href="../public/favicon.ico" />
+      </Head>
+
       <div className="flex justify-center">
         {/* Add Customer Form */}
         <form className="rounded-lg shadow-lg p-8 bg-blue-900">
