@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="../public/favicon.ico" />
       </Head>
 
-      <main className="px-10 h-screen">
+      <main className="px-10 m-h-screen">
         <div className="p-10">{user ? <CustomerTable /> : <SignIn />}</div>
       </main>
     </div>
