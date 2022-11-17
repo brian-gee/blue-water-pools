@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import { addCustomer, deleteCustomer } from "../firebase/initFirestore";
+// import { addCustomer, deleteCustomer } from "../firebase/initFirebase";
 import { tailwindStyles } from "../components/tailwindStyles";
 
 export default function Manage() {
@@ -12,14 +12,14 @@ export default function Manage() {
   var [id, setId] = useState("");
 
   // Add customer to firestore using form data then reset
-  const handleAdd = () => {
-    addCustomer(firstName, lastName, email, address, invoice);
-  };
+  // const handleAdd = () => {
+  //   addCustomer(firstName, lastName, email, address, invoice);
+  // };
 
-  // Delete customer from firestore using form data then reset
-  const handleDelete = () => {
-    deleteCustomer(id);
-  };
+  // // Delete customer from firestore using form data then reset
+  // const handleDelete = () => {
+  //   deleteCustomer(id);
+  // };
 
   return (
     <div className="h-screen">

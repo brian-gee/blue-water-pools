@@ -1,37 +1,49 @@
-import { customerRef, db } from "../firebase/initFirestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { query, orderBy, limit } from "firebase/firestore";
-import { CompactTable } from "@table-library/react-table-library/compact";
-import { useTheme } from "@table-library/react-table-library/theme";
-import { getTheme } from "@table-library/react-table-library/baseline";
-import { useState, useEffect } from "react";
+import { dbRef } from '../firebase/initFirebase';
+import { onValue } from 'firebase/database';
+import { useState, useEffect, useCallback } from 'react';
+import 'primereact/resources/themes/bootstrap4-dark-blue/theme.css';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 
-const dollarUS = Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
+const dollarUS = Intl.NumberFormat('en-US', {
+	style: 'currency',
+	currency: 'USD',
 });
 
 export default function CustomerTable() {
-  const q = query(customerRef, limit(50));
-  const c = useCollectionData(q);
-  const [customers, setCustomers] = useState(c);
+	const [customers, setCustomers] = useState([]);
+	const columnDefs = [
+		{ field: 'first_name', header: 'First',sortable: true },
+		{ field: 'last_name', header: 'Last' },
+		{ field: 'email', header: 'Email' },
+		{ field: 'address', header: 'Address' },
+		{ field: 'invoice', header: 'Invoice' },
+	];
 
-  useEffect(() = async => {
-    setCustomers([...c]);
-  }, []);
+	const dynamicColumns = columnDefs.map((col, i) => {
+		return <Column key={col.field} field={col.field} header={col.header} />;
+	});
 
-  const theme = useTheme(getTheme());
-  const COLUMNS = [
-    { label: "First", renderCell: (customer) => customer.first_name },
-    { label: "Last", renderCell: (customer) => customer.last_name },
-    { label: "Email", renderCell: (customer) => customer.email },
-    { label: "Address", renderCell: (customer) => customer.address },
-    { label: "Invoice", renderCell: (customer) => customer.invoice },
-  ];
+	useEffect(() => {
+		var c = [];
+		onValue(dbRef, (snapshot) => {
+			setCustomers(snapshot.val());
+		});
+	}, []);
 
-  return (
-    <>
-      <CompactTable columns={COLUMNS} data={customers} theme={theme} />
-    </>
-  );
+	return (
+		<>
+			<div className="flex justify-center">
+				<DataTable
+					value={customers}
+					responsiveLayout="scroll"
+					stripedRows
+					showGridlines
+					size='large'
+				>
+					{dynamicColumns}
+				</DataTable>
+			</div>
+		</>
+	);
 }
