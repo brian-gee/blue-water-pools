@@ -1,6 +1,6 @@
 import { dbRef } from '../firebase/initFirebase';
 import { onValue } from 'firebase/database';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import 'primereact/resources/themes/bootstrap4-dark-blue/theme.css';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -25,7 +25,6 @@ export default function CustomerTable() {
 	});
 
 	useEffect(() => {
-		var c = [];
 		onValue(dbRef, (snapshot) => {
 			setCustomers(snapshot.val());
 		});
@@ -33,6 +32,11 @@ export default function CustomerTable() {
 
 	return (
 		<>
+
+
+
+
+
 			<div className="flex justify-center">
 				<DataTable
 					value={customers}
