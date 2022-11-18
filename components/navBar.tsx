@@ -40,18 +40,20 @@ export default function NavBar() {
 							</div>
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 								<div className="flex flex-shrink-0 items-center">
-									<FontAwesomeIcon icon={faCoffee} />
 									{/* <Image
 										className="block h-8 w-auto lg:hidden"
 										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
 										alt="Your Company"
 										width={500}
-      height={500}
+										height={500}
 									/>
 									<Image
 										className="hidden h-8 w-auto lg:block"
 										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
 										alt="Your Company"
+										width={500}
+										height={500}
+
 									/> */}
 								</div>
 								<div className="hidden sm:ml-6 sm:block">
