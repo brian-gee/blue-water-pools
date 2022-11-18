@@ -25,15 +25,6 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-
-interface Data {
-  calories: number;
-  carbs: number;
-  fat: number;
-  name: string;
-  protein: number;
-}
-
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
