@@ -32,11 +32,6 @@ export default function CustomerTable() {
 
 	return (
 		<>
-
-
-
-
-
 			<div className="flex justify-center">
 				<DataTable
 					value={customers}
