@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import Nav from "../components/nav";
+import Nav from "../components/navBar";
 import Footer from "../components/footer";
 import Layout from "../components/layout";
 
