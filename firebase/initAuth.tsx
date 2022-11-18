@@ -20,10 +20,10 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 
-const provider = new GoogleAuthProvider();
-const auth = getAuth(app);
 
 export const AuthContextProvider = () => {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth(app);
   const [user] = useAuthState(auth);
 
   const signInWithGoogle = () => {
@@ -34,5 +34,9 @@ export const AuthContextProvider = () => {
     signOut(auth);
   };
 
-  return { user, signInWithGoogle, logOut };
+  const handleSignIn = () => {
+    user ? logOut : logOut
+  }
+
+  return { user, signInWithGoogle, logOut, handleSignIn };
 };

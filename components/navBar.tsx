@@ -20,7 +20,8 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
-	const { user, logOut } = AuthContextProvider();
+	const { user, logOut, signInWithGoogle, handleSignIn } =
+		AuthContextProvider();
 	return (
 		<Disclosure as="nav" className="bg-gray-800">
 			{({ open }) => (
@@ -40,7 +41,7 @@ export default function NavBar() {
 							</div>
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 								<div className="flex flex-shrink-0 items-center">
-									{/* <Image
+									<Image
 										className="block h-8 w-auto lg:hidden"
 										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
 										alt="Your Company"
@@ -53,8 +54,7 @@ export default function NavBar() {
 										alt="Your Company"
 										width={500}
 										height={500}
-
-									/> */}
+									/>
 								</div>
 								<div className="hidden sm:ml-6 sm:block">
 									<div className="flex space-x-4">
@@ -115,7 +115,8 @@ export default function NavBar() {
 														href="#"
 														className={classNames(
 															active ? 'bg-gray-100' : '',
-															'block px-4 py-2 text-sm text-gray-700'
+															'block px-4 py-2 text-sm text-gray-700',
+															user ? '' : 'hidden'
 														)}
 													>
 														Your Profile
@@ -128,7 +129,8 @@ export default function NavBar() {
 														href="#"
 														className={classNames(
 															active ? 'bg-gray-100' : '',
-															'block px-4 py-2 text-sm text-gray-700'
+															'block px-4 py-2 text-sm text-gray-700',
+															user ? '' : 'hidden'
 														)}
 													>
 														Settings
@@ -141,10 +143,25 @@ export default function NavBar() {
 														onClick={logOut}
 														className={classNames(
 															active ? 'bg-gray-100' : '',
-															'block px-4 py-2 text-sm text-gray-700'
+															'block px-4 py-2 text-sm text-gray-700',
+															user ? '' : 'hidden'
 														)}
 													>
 														Sign out
+													</button>
+												)}
+											</Menu.Item>
+											<Menu.Item>
+												{({ active }) => (
+													<button
+														onClick={signInWithGoogle}
+														className={classNames(
+															active ? 'bg-gray-100' : '',
+															'block px-4 py-2 text-sm text-gray-700',
+															user ? 'hidden' : ''
+														)}
+													>
+														Sign in
 													</button>
 												)}
 											</Menu.Item>
