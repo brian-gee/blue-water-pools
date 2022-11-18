@@ -84,19 +84,19 @@ const headCells: readonly HeadCell[] = [
     label: 'Name',
   },
   {
-    id: 'calories',
+    id: 'email',
     numeric: true,
     disablePadding: false,
     label: 'Email',
   },
   {
-    id: 'fat',
+    id: 'address',
     numeric: true,
     disablePadding: false,
     label: 'Address',
   },
   {
-    id: 'carbs',
+    id: 'invoice',
     numeric: true,
     disablePadding: false,
     label: 'Invoice',
