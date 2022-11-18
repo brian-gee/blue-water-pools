@@ -1,9 +1,12 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { AuthContextProvider } from '../firebase/initAuth';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-
+import defaultPic from '../public/defaultPic.jpg';
 
 // function Nav() {
 // 	return (
@@ -39,7 +42,7 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
-const { user, logOut } = AuthContextProvider();
+	const { user, logOut } = AuthContextProvider();
 	return (
 		<Disclosure as="nav" className="bg-gray-800">
 			{({ open }) => (
@@ -59,16 +62,19 @@ const { user, logOut } = AuthContextProvider();
 							</div>
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 								<div className="flex flex-shrink-0 items-center">
-									<img
+									<FontAwesomeIcon icon={faCoffee} />
+									{/* <Image
 										className="block h-8 w-auto lg:hidden"
 										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
 										alt="Your Company"
+										width={500}
+      height={500}
 									/>
-									<img
+									<Image
 										className="hidden h-8 w-auto lg:block"
 										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
 										alt="Your Company"
-									/>
+									/> */}
 								</div>
 								<div className="hidden sm:ml-6 sm:block">
 									<div className="flex space-x-4">
@@ -104,10 +110,12 @@ const { user, logOut } = AuthContextProvider();
 									<div>
 										<Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
 											<span className="sr-only">Open user menu</span>
-											<img
+											<Image
 												className="h-8 w-8 rounded-full"
-												src={user ? user.photoURL: ''}
+												src={user ? user.photoURL : defaultPic}
 												alt="users profile image"
+												width={100}
+												height={100}
 											/>
 										</Menu.Button>
 									</div>
@@ -149,15 +157,15 @@ const { user, logOut } = AuthContextProvider();
 											</Menu.Item>
 											<Menu.Item>
 												{({ active }) => (
-													<Link
-														href="#"
+													<button
+														onClick={logOut}
 														className={classNames(
 															active ? 'bg-gray-100' : '',
 															'block px-4 py-2 text-sm text-gray-700'
 														)}
 													>
 														Sign out
-													</Link>
+													</button>
 												)}
 											</Menu.Item>
 										</Menu.Items>
