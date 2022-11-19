@@ -25,12 +25,18 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt, faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faFileInvoiceDollar, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { format } from 'node:path/win32';
 
 const darkTheme = createTheme({
 	palette: {
 		mode: 'dark',
 	},
+});
+
+const dollarUS = Intl.NumberFormat('en-US', {
+	style: 'currency',
+	currency: 'USD',
 });
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -105,6 +111,12 @@ const headCells: readonly HeadCell[] = [
 		numeric: true,
 		disablePadding: false,
 		label: 'Invoice',
+	},
+	{
+		id: 'edit',
+		numeric: true,
+		disablePadding: false,
+		label: 'Edit',
 	},
 	{
 		id: 'delete',
@@ -368,7 +380,10 @@ export default function EnhancedTable() {
 												</TableCell>
 												<TableCell align="right">{row.email}</TableCell>
 												<TableCell align="right">{row.address}</TableCell>
-												<TableCell align="right">{row.invoice}</TableCell>
+												<TableCell align="right">{dollarUS.format(row.invoice)}</TableCell>
+												<TableCell align="right">
+													<FontAwesomeIcon icon={faPenToSquare} />
+												</TableCell>
 												<TableCell align="right">
 													<FontAwesomeIcon icon={faTrashAlt} />
 												</TableCell>
