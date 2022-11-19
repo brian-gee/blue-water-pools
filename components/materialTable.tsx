@@ -24,6 +24,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
 
 const darkTheme = createTheme({
 	palette: {
@@ -103,6 +105,12 @@ const headCells: readonly HeadCell[] = [
 		numeric: true,
 		disablePadding: false,
 		label: 'Invoice',
+	},
+	{
+		id: 'delete',
+		numeric: true,
+		disablePadding: false,
+		label: 'Delete',
 	},
 ];
 
@@ -213,9 +221,9 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
 				</Typography>
 			)}
 			{numSelected > 0 ? (
-				<Tooltip title="Delete">
+				<Tooltip title="Send invoice">
 					<IconButton>
-						<DeleteIcon />
+            <FontAwesomeIcon icon={faFileInvoiceDollar}/>
 					</IconButton>
 				</Tooltip>
 			) : (
@@ -255,7 +263,7 @@ export default function EnhancedTable() {
 
 	const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.checked) {
-			const newSelected = rows.map((n) => n.name);
+			const newSelected = rows.map((n) => n.first_name);
 			setSelected(newSelected);
 			return;
 		}
@@ -361,6 +369,9 @@ export default function EnhancedTable() {
 												<TableCell align="right">{row.email}</TableCell>
 												<TableCell align="right">{row.address}</TableCell>
 												<TableCell align="right">{row.invoice}</TableCell>
+												<TableCell align="right">
+													<FontAwesomeIcon icon={faTrashAlt} />
+												</TableCell>
 											</TableRow>
 										);
 									})}

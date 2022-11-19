@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faLadderWater } from '@fortawesome/free-solid-svg-icons';
 import { AuthContextProvider } from '../firebase/initAuth';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
@@ -40,21 +41,12 @@ export default function NavBar() {
 								</Disclosure.Button>
 							</div>
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-								<div className="flex flex-shrink-0 items-center">
-									<Image
-										className="block h-8 w-auto lg:hidden"
-										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-										alt="Your Company"
-										width={500}
-										height={500}
-									/>
-									<Image
-										className="hidden h-8 w-auto lg:block"
-										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-										alt="Your Company"
-										width={500}
-										height={500}
-									/>
+								<div className="flex flex-shrink-0 items-center -mx-6">
+									<Button className="text-white text-2xl animate-none">
+										<Link href="/">
+											<FontAwesomeIcon icon={faLadderWater} />
+										</Link>
+									</Button>
 								</div>
 								<div className="hidden sm:ml-6 sm:block">
 									<div className="flex space-x-4">
