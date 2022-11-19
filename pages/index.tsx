@@ -1,6 +1,5 @@
 import Head from "next/head";
 import SignIn from "../components/signIn";
-import CustomerTable from "../components/customerTable";
 import MaterialTable from "../components/materialTable"
 import { AuthContextProvider } from "../firebase/initAuth";
 

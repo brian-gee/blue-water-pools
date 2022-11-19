@@ -1,4 +1,5 @@
 import * as React from 'react';
+import TrashModal from './trashModal';
 import { dbRef } from '../firebase/initFirebase';
 import { onValue } from 'firebase/database';
 import { useState, useEffect } from 'react';
@@ -20,13 +21,15 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt, faFileInvoiceDollar, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { format } from 'node:path/win32';
+import {
+	faTrashAlt,
+	faFileInvoiceDollar,
+	faPenToSquare,
+} from '@fortawesome/free-solid-svg-icons';
 
 const darkTheme = createTheme({
 	palette: {
@@ -235,7 +238,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
 			{numSelected > 0 ? (
 				<Tooltip title="Send invoice">
 					<IconButton>
-            <FontAwesomeIcon icon={faFileInvoiceDollar}/>
+						<FontAwesomeIcon icon={faFileInvoiceDollar} />
 					</IconButton>
 				</Tooltip>
 			) : (
@@ -323,6 +326,16 @@ export default function EnhancedTable() {
 	const emptyRows =
 		page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
+	const [open, setOpen] = React.useState(false);
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+
+	const handleOpen = () => {
+		setOpen(true);
+	};
+
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<Box sx={{ width: '100%' }}>
@@ -352,15 +365,7 @@ export default function EnhancedTable() {
 										const labelId = `enhanced-table-checkbox-${index}`;
 
 										return (
-											<TableRow
-												hover
-												onClick={(event) => handleClick(event, row.first_name)}
-												role="checkbox"
-												aria-checked={isItemSelected}
-												tabIndex={-1}
-												key={row.first_name}
-												selected={isItemSelected}
-											>
+											<TableRow hover key={row.first_name}>
 												<TableCell padding="checkbox">
 													<Checkbox
 														color="primary"
@@ -368,6 +373,12 @@ export default function EnhancedTable() {
 														inputProps={{
 															'aria-labelledby': labelId,
 														}}
+														onClick={(event) =>
+															handleClick(event, row.first_name)
+														}
+														role="checkbox"
+														aria-checked={isItemSelected}
+														tabIndex={-1}
 													/>
 												</TableCell>
 												<TableCell
@@ -380,12 +391,17 @@ export default function EnhancedTable() {
 												</TableCell>
 												<TableCell align="right">{row.email}</TableCell>
 												<TableCell align="right">{row.address}</TableCell>
-												<TableCell align="right">{dollarUS.format(row.invoice)}</TableCell>
 												<TableCell align="right">
-													<FontAwesomeIcon icon={faPenToSquare} />
+													{dollarUS.format(row.invoice)}
 												</TableCell>
 												<TableCell align="right">
-													<FontAwesomeIcon icon={faTrashAlt} />
+													<FontAwesomeIcon
+														icon={faPenToSquare}
+														onClick={() => alert(row.first_name)}
+													/>
+												</TableCell>
+												<TableCell align="right">
+                        <TrashModal props={[row.first_name, row.last_name]}/>
 												</TableCell>
 											</TableRow>
 										);
