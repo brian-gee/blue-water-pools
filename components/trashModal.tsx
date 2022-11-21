@@ -21,7 +21,7 @@ const style = {
 	p: 4,
 };
 
-export default function BasicModal(props) {
+export default function TrashModal(props) {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
