@@ -5,6 +5,7 @@ import { onValue } from 'firebase/database';
 import { useState, useEffect } from 'react';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -340,7 +341,10 @@ export default function EnhancedTable() {
 		<ThemeProvider theme={darkTheme}>
 			<Box sx={{ width: '100%' }}>
 				<Paper sx={{ width: '100%', mb: 2 }}>
-					<EnhancedTableToolbar numSelected={selected.length} />
+					{/* Trying to figure out how to send an invoice to all selected customers */}
+					<div onClick={() => alert(row.first_name)}>
+						<EnhancedTableToolbar numSelected={selected.length} />
+					</div>
 					<TableContainer>
 						<Table
 							sx={{ minWidth: 750 }}
@@ -401,7 +405,7 @@ export default function EnhancedTable() {
 													/>
 												</TableCell>
 												<TableCell align="right">
-                        <TrashModal props={[row.first_name, row.last_name]}/>
+													<TrashModal props={[row.first_name, row.last_name]} />
 												</TableCell>
 											</TableRow>
 										);
