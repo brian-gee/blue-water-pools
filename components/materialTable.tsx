@@ -342,7 +342,7 @@ export default function EnhancedTable() {
 			<Box sx={{ width: '100%' }}>
 				<Paper sx={{ width: '100%', mb: 2 }}>
 					{/* Trying to figure out how to send an invoice to all selected customers */}
-					<div onClick={() => alert(row.first_name)}>
+					<div onClick={() => alert()}>
 						<EnhancedTableToolbar numSelected={selected.length} />
 					</div>
 					<TableContainer>
