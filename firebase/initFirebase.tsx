@@ -1,5 +1,5 @@
 import { app } from "./initAuth";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, child, get, remove} from "firebase/database";
 
 export const db = getDatabase();
 export const dbRef = ref(db, 'customers');
@@ -21,8 +21,8 @@ export const dbRef = ref(db, 'customers');
 //   });
 // };
 
-// // // Delete customer
-// export const deleteCustomer = (id: string) => {
-//   const customerRef = doc(db, "customers", id);
-//   deleteDoc(customerRef);
-// };
+// // Delete customer
+export const deleteCustomer = (customer: { id: number; }) => {
+  const id = customer.id - 1
+  remove(ref(db, `/customers/${id}`))
+};

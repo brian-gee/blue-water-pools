@@ -22,12 +22,12 @@ const style = {
 };
 
 export default function EditModal(props) {
-	const customer = props.customer;
+	const [customer, setCustomer] = useState(props.props);
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 	return (
-		<div>
+		<>
 			<Button className="text-white" onClick={handleOpen}>
 				<FontAwesomeIcon icon={faPenToSquare} />
 			</Button>
@@ -44,7 +44,7 @@ export default function EditModal(props) {
 								className="text-red-500 bg-red-200 rounded-full p-2 mr-4"
 								icon={faTriangleExclamation}
 							/>
-							Are you sure you want to delete {props.first_name} {props.last_name}?
+							Are you sure you want to delete {customer.first_name} {customer.last_name}?
 						</h1>
 					</Typography>
 					<div className="flex justify-center pt-6">
@@ -61,6 +61,6 @@ export default function EditModal(props) {
 					</Typography> */}
 				</Box>
 			</Modal>
-		</div>
+		</>
 	);
 }

@@ -402,7 +402,6 @@ export default function EnhancedTable() {
 												</TableCell>
 												<TableCell align="right">
 													<EditModal props={row} />
-													{console.log(row)}
 												</TableCell>
 												<TableCell align="right">
 													<TrashModal props={row} />
