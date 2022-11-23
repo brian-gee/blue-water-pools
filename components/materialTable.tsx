@@ -1,5 +1,6 @@
 import * as React from 'react';
 import TrashModal from './trashModal';
+import EditModal from './editModal';
 import { dbRef } from '../firebase/initFirebase';
 import { onValue } from 'firebase/database';
 import { useState, useEffect } from 'react';
@@ -343,6 +344,7 @@ export default function EnhancedTable() {
 				<Paper sx={{ width: '100%', mb: 2 }}>
 					{/* Trying to figure out how to send an invoice to all selected customers */}
 					<div onClick={() => alert()}>
+
 						<EnhancedTableToolbar numSelected={selected.length} />
 					</div>
 					<TableContainer>
@@ -399,13 +401,11 @@ export default function EnhancedTable() {
 													{dollarUS.format(row.invoice)}
 												</TableCell>
 												<TableCell align="right">
-													<FontAwesomeIcon
-														icon={faPenToSquare}
-														onClick={() => alert(row.first_name)}
-													/>
+													<EditModal props={row} />
+													{console.log(row)}
 												</TableCell>
 												<TableCell align="right">
-													<TrashModal props={[row.first_name, row.last_name]} />
+													<TrashModal props={row} />
 												</TableCell>
 											</TableRow>
 										);

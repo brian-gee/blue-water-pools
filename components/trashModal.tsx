@@ -54,7 +54,7 @@ export default function TrashModal(props) {
 					</Typography>
 					<div className='flex justify-center pt-6'>
 						<Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-1">Yes</Button>
-						<Button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-1">No</Button>
+						<Button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-1" onClick={handleClose}>No</Button>
 					</div>
 					{/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
 						Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
