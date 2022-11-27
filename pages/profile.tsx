@@ -20,6 +20,13 @@ export default function Home() {
 
 			<main className="px-10 m-h-screen">
 				<div className="flex justify-center">
+				<Image
+												className="h-8 w-8 rounded-full"
+												src={user ? user.photoURL : ""}
+												alt="users profile image"
+												width={100}
+												height={100}
+											/>
 					<div className="flex">{user?.displayName}</div>
 					<div className="flex">{user?.email}</div>
 				</div>
