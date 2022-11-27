@@ -16,7 +16,7 @@ const style = {
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 400,
+	width: 500,
 	bgcolor: 'background.paper',
 	border: '2px solid #000',
 	boxShadow: 24,
@@ -49,12 +49,13 @@ export default function EditModal(props) {
 					<Typography id="modal-modal-title" variant="h6" component="h2">
 						<div className="flex justify-center">
 							{/* Edit Customer Form */}
-							<form className="rounded-lg shadow-lg p-8 bg-blue-900">
+							<form className="rounded-lg shadow-lg p-8">
 								<h1 className="text-2xl flex justify-center pb-5">
 									Edit customer
 								</h1>
 								<div className="grid grid-cols-2 gap-4">
 									<div className="form-group mb-5">
+										<label>First</label>
 										<input
 											type="text"
 											className={tailwindStyles.formItem}
@@ -64,6 +65,7 @@ export default function EditModal(props) {
 										/>
 									</div>
 									<div className="form-group mb-5">
+										<label>Last</label>
 										<input
 											type="text"
 											className={tailwindStyles.formItem}
@@ -74,6 +76,7 @@ export default function EditModal(props) {
 									</div>
 								</div>
 								<div className="form-group mb-5">
+									<label>Address</label>
 									<input
 										type="address"
 										className={tailwindStyles.formItem}
@@ -83,6 +86,7 @@ export default function EditModal(props) {
 									/>
 								</div>
 								<div className="form-group mb-5">
+									<label>Email</label>
 									<input
 										type="email"
 										className={tailwindStyles.formItem}
@@ -92,6 +96,7 @@ export default function EditModal(props) {
 									/>
 								</div>
 								<div className="form-group mb-5">
+									<label>Invoice</label>
 									<input
 										type="number"
 										className={tailwindStyles.formItem}

@@ -373,6 +373,7 @@ export default function EnhancedTable() {
 										return (
 											<TableRow hover key={row.first_name}>
 												<TableCell padding="checkbox">
+													{console.log(rows)}
 													<Checkbox
 														color="primary"
 														checked={isItemSelected}

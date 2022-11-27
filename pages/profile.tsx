@@ -8,20 +8,22 @@ export default function Home() {
   const { user } = AuthContextProvider();
 
   return (
-    <div className="">
-      <Head>
-        <title>Profile</title>
-        <meta
-          name="description"
-          content="SK Cleaning, the pool service for you"
-        />
-        <link rel="icon" href="../public/favicon.ico" />
-      </Head>
+		<div className="">
+			<Head>
+				<title>Profile</title>
+				<meta
+					name="description"
+					content="SK Cleaning, the pool service for you"
+				/>
+				<link rel="icon" href="../public/favicon.ico" />
+			</Head>
 
-      <main className="px-10 m-h-screen">
-        {user?.displayName}
-        {user?.email}
-      </main>
-    </div>
-  );
+			<main className="px-10 m-h-screen">
+				<div className="flex justify-center">
+					<div className="flex">{user?.displayName}</div>
+					<div className="flex">{user?.email}</div>
+				</div>
+			</main>
+		</div>
+	);
 }

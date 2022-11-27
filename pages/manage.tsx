@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-// import { addCustomer, deleteCustomer } from "../firebase/initFirebase";
+import { addCustomer, deleteCustomer } from "../firebase/initFirebase";
 import { tailwindStyles } from "../components/tailwindStyles";
 
 export default function Manage() {
@@ -12,14 +12,14 @@ export default function Manage() {
   var [id, setId] = useState("");
 
   // Add customer to firestore using form data then reset
-  // const handleAdd = () => {
-  //   addCustomer(firstName, lastName, email, address, invoice);
-  // };
+  const handleAdd = () => {
+    addCustomer(firstName, lastName, email, address, invoice, id);
+  };
 
-  // // Delete customer from firestore using form data then reset
-  // const handleDelete = () => {
-  //   deleteCustomer(id);
-  // };
+  // Delete customer from firestore using form data then reset
+  const handleDelete = () => {
+    deleteCustomer(id);
+  };
 
   return (
     <div className="h-screen">
@@ -32,9 +32,9 @@ export default function Manage() {
         <link rel="icon" href="../public/favicon.ico" />
       </Head>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center pt-20">
         {/* Add Customer Form */}
-        <form className="rounded-lg shadow-lg p-8 bg-blue-900">
+        <form className="rounded-lg border p-8">
           <h1 className="text-2xl flex justify-center pb-5">
             Add a new customer
           </h1>
@@ -88,29 +88,6 @@ export default function Manage() {
           <div className="">
             <button onClick={handleAdd} className={tailwindStyles.btn}>
               Create customer
-            </button>
-          </div>
-        </form>
-      </div>
-
-      {/* Delete customer form */}
-      <div className="pt-10 flex justify-center">
-        <form className="shadow-lg p-10 bg-blue-900">
-          <h1 className="text-2xl flex justify-center pb-5">
-            Delete a customer
-          </h1>
-          <div className="form-group mb-5">
-            <input
-              type="text"
-              className={tailwindStyles.formItem}
-              placeholder="ID"
-              value={id}
-              onChange={(e) => setId(e.target.value)}
-            />
-          </div>
-          <div className="">
-            <button onClick={handleDelete} className={tailwindStyles.btn}>
-              Delete customer
             </button>
           </div>
         </form>
