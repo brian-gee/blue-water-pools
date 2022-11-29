@@ -255,12 +255,12 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
 }
 
 export default function EnhancedTable() {
-	const [order, setOrder] = React.useState<Order>('asc');
-	const [orderBy, setOrderBy] = React.useState<keyof Data>('calories');
-	const [selected, setSelected] = React.useState<readonly string[]>([]);
-	const [page, setPage] = React.useState(0);
-	const [dense, setDense] = React.useState(false);
-	const [rowsPerPage, setRowsPerPage] = React.useState(10);
+	const [order, setOrder] = useState<Order>('asc');
+	const [orderBy, setOrderBy] = useState<keyof Data>('calories');
+	const [selected, setSelected] = useState<readonly string[]>([]);
+	const [page, setPage] = useState(0);
+	const [dense, setDense] = useState(false);
+	const [rowsPerPage, setRowsPerPage] = useState(10);
 
 	const [rows, setRows] = useState([]);
 	useEffect(() => {
@@ -344,7 +344,6 @@ export default function EnhancedTable() {
 				<Paper sx={{ width: '100%', mb: 2 }}>
 					{/* Trying to figure out how to send an invoice to all selected customers */}
 					<div onClick={() => alert()}>
-
 						<EnhancedTableToolbar numSelected={selected.length} />
 					</div>
 					<TableContainer>
@@ -396,7 +395,9 @@ export default function EnhancedTable() {
 												>
 													{row.first_name + '  ' + row.last_name}
 												</TableCell>
-												<TableCell className='select-all' align="right">{row.email}</TableCell>
+												<TableCell className="select-all" align="right">
+													{row.email}
+												</TableCell>
 												<TableCell align="right">{row.address}</TableCell>
 												<TableCell align="right">
 													{dollarUS.format(row.invoice)}
