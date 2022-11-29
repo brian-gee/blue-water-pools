@@ -8,7 +8,7 @@ export default function Manage() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
-  const [invoice, setInvoice] = useState(0);
+  const [invoice, setInvoice] = useState("");
   var [id, setId] = useState("");
 
   // Add customer to firestore using form data then reset
@@ -32,9 +32,9 @@ export default function Manage() {
         <link rel="icon" href="../public/favicon.ico" />
       </Head>
 
-      <div className="flex justify-center pt-20">
+      <div className="flex justify-center pt-16">
         {/* Add Customer Form */}
-        <form className="rounded-lg border p-8">
+        <form className="rounded-lg p-8">
           <h1 className="text-2xl flex justify-center pb-5">
             Add a new customer
           </h1>
