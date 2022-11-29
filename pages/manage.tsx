@@ -35,7 +35,7 @@ export default function Manage() {
       <div className="flex justify-center pt-16">
         {/* Add Customer Form */}
         <form className="rounded-lg p-8">
-          <h1 className="text-2xl flex justify-center pb-5">
+          <h1 className="text-2xl flex justify-center pb-10">
             Add a new customer
           </h1>
           <div className="grid grid-cols-2 gap-4">
