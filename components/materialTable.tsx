@@ -396,7 +396,7 @@ export default function EnhancedTable() {
 												>
 													{row.first_name + '  ' + row.last_name}
 												</TableCell>
-												<TableCell align="right">{row.email}</TableCell>
+												<TableCell className='select-all' align="right">{row.email}</TableCell>
 												<TableCell align="right">{row.address}</TableCell>
 												<TableCell align="right">
 													{dollarUS.format(row.invoice)}
