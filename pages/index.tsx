@@ -14,7 +14,7 @@ export default function Home() {
           name="description"
           content="SK Cleaning, the pool service for you"
         />
-        <link rel="icon" href="../public/favicon.ico" />
+        <link rel="icon" href="../public/favicon.svg" />
       </Head>
 
       <main className="px-10 m-h-screen">

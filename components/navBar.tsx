@@ -12,8 +12,7 @@ import defaultPic from '../public/defaultPic.jpg';
 const navigation = [
 	{ name: 'Dashboard', href: '/', current: true },
 	{ name: 'Manage', href: '/manage', current: false },
-	{ name: 'Profile', href: '/profile', current: false },
-	{ name: 'Calendar', href: '#', current: false },
+	{ name: 'Team', href: '/team', current: false },
 ];
 
 function classNames(...classes) {
