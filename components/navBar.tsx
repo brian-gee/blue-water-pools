@@ -23,6 +23,11 @@ function classNames(...classes) {
 export default function NavBar() {
 	const { user, logOut, signInWithGoogle, handleSignIn } =
 		AuthContextProvider();
+	const largeImg = (url) => {
+		var img = '';
+		img = url.replace('s96-c', 's400-c');
+		return img;
+	};
 	return (
 		<Disclosure as="nav" className="bg-gray-800">
 			{({ open }) => (
@@ -84,7 +89,7 @@ export default function NavBar() {
 											<span className="sr-only">Open user menu</span>
 											<Image
 												className="h-8 w-8 rounded-full"
-												src={user ? user.photoURL : defaultPic}
+												src={user ? largeImg(user.photoURL) : defaultPic}
 												alt="users profile image"
 												width={100}
 												height={100}
