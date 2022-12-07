@@ -4,6 +4,7 @@ import EditModal from './editModal';
 import { dbRef } from '../firebase/initFirebase';
 import { onValue } from 'firebase/database';
 import { useState, useEffect } from 'react';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -91,6 +92,48 @@ interface HeadCell {
 	label: string;
 	numeric: boolean;
 }
+
+const columns: GridColDef[] = [
+	{
+		field: 'firstName',
+		headerName: 'First name',
+		width: 150,
+		editable: true,
+	},
+	{
+		field: 'lastName',
+		headerName: 'Last name',
+		width: 150,
+		editable: true,
+	},
+	{
+		field: 'email',
+		headerName: 'Email',
+		width: 150,
+		editable: true,
+	},
+	{
+		field: 'address',
+		headerName: 'Address',
+		width: 150,
+		editable: true,
+	},
+	{
+		field: 'invoice',
+		headerName: 'Invoice',
+		width: 150,
+		editable: true,
+	},
+	{
+		field: 'fullName',
+		headerName: 'Full name',
+		description: 'This column has a value getter and is not sortable.',
+		sortable: false,
+		width: 160,
+		valueGetter: (params: GridValueGetterParams) =>
+			`${params.row.firstName || ''} ${params.row.lastName || ''}`,
+	},
+];
 
 const headCells: readonly HeadCell[] = [
 	{
@@ -372,7 +415,6 @@ export default function EnhancedTable() {
 										return (
 											<TableRow hover key={row.first_name}>
 												<TableCell padding="checkbox">
-													{console.log(rows)}
 													<Checkbox
 														color="primary"
 														checked={isItemSelected}
