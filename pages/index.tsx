@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <div className="">
       <Head>
-        <title>SK Cleaning</title>
+        <title>Blue Water Pools</title>
         <meta
           name="description"
-          content="SK Cleaning, the pool service for you"
+          content="The pool service for you"
         />
         <link rel="icon" href="../public/favicon.svg" />
       </Head>

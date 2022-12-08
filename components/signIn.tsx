@@ -8,7 +8,7 @@ export default function SignIn() {
     <>
       <div className="pb-20 flex justify-center">
         <h1 className="lg:text-7xl md:text-5xl sm:text-3xl ">
-          Welcome to Sk Cleaning
+          Welcome to Blue Water Pools
         </h1>
       </div>
       <div className="flex justify-center">
