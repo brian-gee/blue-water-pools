@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { dbRef } from '../firebase/initFirebase';
+import { onValue } from 'firebase/database';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -63,7 +66,7 @@ const rows = [
   { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
   { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 10, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
 export default function EzGrid() {

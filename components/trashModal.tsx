@@ -34,7 +34,6 @@ function handleDelete(customer) {
 }
 	return (
 		<div>
-			{console.log(customer)}
 			<Button className="text-white" onClick={handleOpen}>
 				<FontAwesomeIcon icon={faTrashAlt} />
 			</Button>
