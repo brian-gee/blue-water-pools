@@ -10,12 +10,6 @@ export default function Home() {
 		{ name: 'Ryan', email: 'ryan@boss.com', pic: ryan },
 	]);
 
-	const largeImg = (url: string) => {
-		var img = '';
-		img = url.replace('s96-c', 's400-c');
-		return img;
-	};
-
 	return (
 		<div className="">
 			<Head>
