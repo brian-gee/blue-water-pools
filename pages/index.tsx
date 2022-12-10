@@ -1,7 +1,6 @@
 import Head from "next/head";
 import SignIn from "../components/signIn";
 import MaterialTable from "../components/materialTable"
-import EzGrid from "../components/ezGrid"
 import { AuthContextProvider } from "../firebase/initAuth";
 
 export default function Home() {
@@ -18,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="../public/favicon.svg" />
       </Head>
 
-      <main className="px-10 m-h-screen">
+      <main className="px-10">
         <div className="p-10">{user ? <MaterialTable/> : <SignIn />}</div>
       </main>
     </div>
