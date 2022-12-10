@@ -16,7 +16,7 @@ export default function Home() {
 		{ name: 'Ryan', email: 'ryan@boss.com', pic: ryan },
 	]);
 
-	const largeImg = (url) => {
+	const largeImg = (url:string) => {
 		var img = '';
 		img = url.replace('s96-c', 's400-c');
 		return img;
@@ -49,7 +49,7 @@ export default function Home() {
 					</div>
 					<div className="px-6 py-4">
 						<div className="flex justify-center font-bold text-xl mb-2">
-							{boss.name}'s Profile
+							{boss.name}&apos;s Profile
 						</div>
 						<p className="text-gray-200 text-base">{boss.email}</p>
 					</div>

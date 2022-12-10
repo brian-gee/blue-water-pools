@@ -23,7 +23,16 @@ const style = {
 	p: 4,
 };
 
-export default function EditModal(props) {
+export default function EditModal(props: {
+	props: {
+		first_name: string;
+		last_name: string;
+		email: string;
+		address: string;
+		invoice: number;
+		id: number;
+	};
+}) {
 	const [customer, setCustomer] = useState(props.props);
 	const [firstName, setFirstName] = useState(customer.first_name);
 	const [lastName, setLastName] = useState(customer.last_name);
