@@ -65,7 +65,9 @@ export default function EzGrid() {
 	}, []);
 
   return (
-    <></>
+    <>
+    {console.log(rows)}
+    </>
     // <ThemeProvider theme={darkTheme}>
     // <Box sx={{ height: 635, width: '100%' }}>
     //   <DataGrid
