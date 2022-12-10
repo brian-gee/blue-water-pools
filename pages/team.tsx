@@ -5,9 +5,9 @@ import brian from '../public/brian-40.jpg';
 import ryan from '../public/ryan-r.jpg';
 
 export default function Home() {
-	const [bosses] = useState([
-		{ name: 'Brian', email: 'brian@boss.com', pic: brian },
-		{ name: 'Ryan', email: 'ryan@boss.com', pic: ryan },
+	const [team] = useState([
+		{ first_name: 'Brian', last_name: 'G', email: 'brian@mail.com', pic: brian },
+		{ first_name: 'Ryan', last_name: 'G', email: 'ryan@mail.com', pic: ryan },
 	]);
 
 	return (
@@ -20,7 +20,7 @@ export default function Home() {
 
 			<main className="px-10 min-h-screen">
 				<div className="flex justify-center pt-16">
-					{bosses.map((boss, i) => (
+					{team.map((teamMember, i) => (
 						<div
 							key={i}
 							className="max-w-md overflow-hidden rounded shadow-2xl mr-10"
@@ -28,7 +28,7 @@ export default function Home() {
 							<div className="flex justify-center">
 								<Image
 									className="h-24 w-24 object-contain"
-									src={boss.pic}
+									src={teamMember.pic}
 									alt="users profile image"
 									width={100}
 									height={100}
@@ -36,9 +36,9 @@ export default function Home() {
 							</div>
 							<div className="px-6 py-4">
 								<div className="flex justify-center font-bold text-xl mb-2">
-									{boss.name}&apos;s Profile
+									{teamMember.first_name + " " + teamMember.last_name}
 								</div>
-								<p className="text-gray-200 text-base">{boss.email}</p>
+								<p className="text-gray-200 text-base">{teamMember.email}</p>
 							</div>
 						</div>
 					))}
