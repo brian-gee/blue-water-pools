@@ -1,7 +1,8 @@
-import Nav from "./navBar";
-import Footer from "./footer";
+interface LayoutProps {
+  children: React.ReactNode[];
+}
 
-export default function Layout({ children }) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <div>
       <main>{children}</main>
