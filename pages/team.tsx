@@ -4,7 +4,7 @@ import Image from 'next/image';
 import brian from '../public/brian-40.jpg';
 import ryan from '../public/ryan-r.jpg';
 
-export default function Home() {
+export default function Team() {
 	const [team] = useState([
 		{ first_name: 'Brian', last_name: 'G', email: 'brian@mail.com', pic: brian },
 		{ first_name: 'Ryan', last_name: 'G', email: 'ryan@mail.com', pic: ryan },

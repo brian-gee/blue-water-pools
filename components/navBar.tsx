@@ -22,7 +22,7 @@ function classNames(...classes) {
 export default function NavBar() {
 	const { user, logOut, signInWithGoogle, handleSignIn } =
 		AuthContextProvider();
-	const largeImg = (url) => {
+	const largeImg = (url: string) => {
 		var img = '';
 		img = url.replace('s96-c', 's400-c');
 		return img;
