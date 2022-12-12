@@ -11,6 +11,11 @@ const darkTheme = createTheme({
 	},
 });
 
+const dollarUS = Intl.NumberFormat('en-US', {
+	style: 'currency',
+	currency: 'USD',
+});
+
 const columns: GridColDef[] = [
 	{ field: 'id', headerName: 'ID', width: 90 },
 	{
@@ -51,7 +56,8 @@ const columns: GridColDef[] = [
 		headerName: 'Invoice',
 		type: 'number',
 		width: 110,
-		editable: true,
+		valueGetter: (params: GridValueGetterParams) =>
+			`${dollarUS.format(params.row.invoice)}`,
 	},
 ];
 
@@ -69,14 +75,14 @@ export default function CustomerGrid() {
 		  <DataGrid
 		    columns={columns}
 		    rows={rows}
-		    pageSize={10}
-		    rowsPerPageOptions={[5]}
+				autoPageSize
+				rowsPerPageOptions={[10, 20, 50]}
+				pagination
 		    checkboxSelection
 		    disableSelectionOnClick
 		    experimentalFeatures={{ newEditingApi: true }}
 		    className=' bg-gray-900 border-slate-300 border-2'
 		  />
-		  {console.log(rows)}
 		</Box>
 		</ThemeProvider>
 	);
