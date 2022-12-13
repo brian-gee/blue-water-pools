@@ -1,6 +1,5 @@
 import Head from "next/head";
 import SignIn from "../components/signIn";
-import MaterialTable from "../components/materialTable"
 import CustomerGrid from "../components/customerGrid"
 import { AuthContextProvider } from "../firebase/initAuth";
 
@@ -20,7 +19,6 @@ export default function Home() {
 
       <main className="px-10">
         <div className="p-10">{user ? <CustomerGrid/> : <SignIn />}</div>
-        {/* <div className="p-10">{user ? <MaterialTable/> : <SignIn />}</div> */}
       </main>
     </div>
   );

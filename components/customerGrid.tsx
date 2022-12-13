@@ -1,9 +1,21 @@
+import * as React from 'react';
 import { dbRef } from '../firebase/initFirebase';
 import { onValue } from 'firebase/database';
 import { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {
+  DataGrid,
+	GridColDef,
+	GridValueGetterParams,
+  GridActionsCellItem,
+  GridRowId,
+  GridColumns,
+	GridToolbar
+} from '@mui/x-data-grid';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SecurityIcon from '@mui/icons-material/Security';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
+
 
 const darkTheme = createTheme({
 	palette: {
@@ -16,8 +28,9 @@ const dollarUS = Intl.NumberFormat('en-US', {
 	currency: 'USD',
 });
 
+
 const columns: GridColDef[] = [
-	{ field: 'id', headerName: 'ID', width: 90 },
+	// { field: 'id', headerName: 'ID', width: 90 },
 	{
 		field: 'first_name',
 		headerName: 'First name',
@@ -43,19 +56,11 @@ const columns: GridColDef[] = [
 		editable: true,
 	},
 	{
-		field: 'fullName',
-		headerName: 'Full name',
-		description: 'This column has a value getter and is not sortable.',
-		sortable: false,
-		width: 160,
-		valueGetter: (params: GridValueGetterParams) =>
-			`${params.row.first_name || ''} ${params.row.last_name || ''}`,
-	},
-	{
 		field: 'invoice',
 		headerName: 'Invoice',
 		type: 'number',
 		width: 110,
+		editable: true,
 		valueGetter: (params: GridValueGetterParams) =>
 			`${dollarUS.format(params.row.invoice)}`,
 	},
@@ -71,19 +76,19 @@ export default function CustomerGrid() {
 
 	return (
 		<ThemeProvider theme={darkTheme}>
-		<Box sx={{ height: 635, width: '100%' }}>
-		  <DataGrid
-		    columns={columns}
-		    rows={rows}
-				autoPageSize
-				rowsPerPageOptions={[10, 20, 50]}
-				pagination
-		    checkboxSelection
-		    disableSelectionOnClick
-		    experimentalFeatures={{ newEditingApi: true }}
-		    className=' bg-gray-900 border-slate-300 border-2'
-		  />
-		</Box>
+			<div style={{ height: 670, width: '100%' }}>
+				<DataGrid
+					columns={columns}
+					rows={rows}
+					autoPageSize
+					components={{ Toolbar: GridToolbar }}
+					pagination
+					checkboxSelection
+					disableSelectionOnClick
+					experimentalFeatures={{ newEditingApi: true }}
+					className=' bg-gray-900 border-slate-300 border-2'
+				/>
+			</div>
 		</ThemeProvider>
 	);
 }
