@@ -328,7 +328,8 @@ export default function EnhancedTable() {
 			return;
 		}
 		setSelected([]);
-	};
+	}© 2022
+	;
 
 	const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
 		const selectedIndex = selected.indexOf(name);
