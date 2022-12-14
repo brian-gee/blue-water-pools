@@ -10,7 +10,6 @@ import {
 	faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 
-
 const style = {
 	position: 'absolute',
 	top: '30%',
@@ -23,15 +22,15 @@ const style = {
 	p: 4,
 };
 
-export default function TrashModal(props) {
+export default function TrashModal(props: Record<string, any>) {
 	const [customer, setCustomer] = useState(props.props);
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
-function handleDelete(customer) {
-	deleteCustomer(customer)
-	handleClose()
-}
+	function handleDelete(customer: {id: number}) {
+		deleteCustomer(customer);
+		handleClose();
+	}
 	return (
 		<div>
 			<Button className="text-white" onClick={handleOpen}>
