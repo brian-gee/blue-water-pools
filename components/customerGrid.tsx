@@ -1,7 +1,6 @@
-import * as React from 'react';
 import { dbRef } from '../firebase/initFirebase';
 import { onValue } from 'firebase/database';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import {
   DataGrid,
@@ -27,6 +26,8 @@ const dollarUS = Intl.NumberFormat('en-US', {
 	style: 'currency',
 	currency: 'USD',
 });
+
+
 
 
 const columns: GridColDef[] = [
@@ -64,6 +65,28 @@ const columns: GridColDef[] = [
 		valueGetter: (params: GridValueGetterParams) =>
 			`${dollarUS.format(params.row.invoice)}`,
 	},
+	// {
+	// 	field: 'actions',
+	// 	type: 'actions',
+	// 	width: 80,
+	// 	getActions: (params) => [
+	// 		<GridActionsCellItem
+	// 			icon={<DeleteIcon />}
+	// 			label="Delete"
+	// 			onClick={testClick}
+	// 		/>,
+	// 		<GridActionsCellItem
+	// 			icon={<SecurityIcon />}
+	// 			label="Toggle Admin"
+	// 			showInMenu
+	// 		/>,
+	// 		<GridActionsCellItem
+	// 			icon={<FileCopyIcon />}
+	// 			label="Duplicate User"
+	// 			showInMenu
+	// 		/>,
+	// 	],
+	// },
 ];
 
 export default function CustomerGrid() {
