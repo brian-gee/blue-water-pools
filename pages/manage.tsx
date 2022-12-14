@@ -9,7 +9,7 @@ export default function Manage() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [invoice, setInvoice] = useState("");
-  var [id, setId] = useState("");
+  const [id, setId] = useState("");
 
   // Add customer to firestore using form data then reset
   const handleAdd = () => {
@@ -17,8 +17,8 @@ export default function Manage() {
   };
 
   // Delete customer from firestore using form data then reset
-  const handleDelete = () => {
-    deleteCustomer(parseInt(id));
+  const handleDelete = (id: {id: number}) => {
+    deleteCustomer(id);
   };
 
   return (
