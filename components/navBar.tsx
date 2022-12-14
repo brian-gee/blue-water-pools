@@ -88,7 +88,7 @@ export default function NavBar() {
 											<span className="sr-only">Open user menu</span>
 											<Image
 												className="h-8 w-8 rounded-full"
-												src={user ? largeImg(user.photoURL) : defaultPic}
+												src={user && user.photoURL ? largeImg(user.photoURL) : defaultPic}
 												alt="users profile image"
 												width={100}
 												height={100}
