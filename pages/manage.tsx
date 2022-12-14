@@ -13,12 +13,12 @@ export default function Manage() {
 
   // Add customer to firestore using form data then reset
   const handleAdd = () => {
-    addCustomer(firstName, lastName, email, address, invoice, id);
+    addCustomer(firstName, lastName, email, address, parseInt(invoice), parseInt(id));
   };
 
   // Delete customer from firestore using form data then reset
   const handleDelete = () => {
-    deleteCustomer(id);
+    deleteCustomer(parseInt(id));
   };
 
   return (
@@ -82,7 +82,7 @@ export default function Manage() {
               className={tailwindStyles.formItem}
               placeholder="Invoice"
               value={invoice}
-              onChange={(e) => setInvoice(parseInt(e.target.value))}
+              onChange={(e) => setInvoice(e.target.value)}
             />
           </div>
           <div className="">
