@@ -73,14 +73,6 @@ export default function NavBar() {
 								</div>
 							</div>
 							<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-								<button
-									type="button"
-									className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-								>
-									<span className="sr-only">View notifications</span>
-									<BellIcon className="h-6 w-6" aria-hidden="true" />
-								</button>
-
 								{/* Profile dropdown */}
 								<Menu as="div" className="relative ml-3">
 									<div>
@@ -88,7 +80,11 @@ export default function NavBar() {
 											<span className="sr-only">Open user menu</span>
 											<Image
 												className="h-8 w-8 rounded-full"
-												src={user && user.photoURL ? largeImg(user.photoURL) : defaultPic}
+												src={
+													user && user.photoURL
+														? largeImg(user.photoURL)
+														: defaultPic
+												}
 												alt="users profile image"
 												width={100}
 												height={100}
@@ -108,34 +104,7 @@ export default function NavBar() {
 											<Menu.Item>
 												{({ active }) => (
 													<Link
-														href="/profile"
-														className={classNames(
-															active ? 'bg-gray-100' : '',
-															'block px-4 py-2 text-sm text-gray-700',
-															user ? '' : 'hidden'
-														)}
-													>
-														Your Profile
-													</Link>
-												)}
-											</Menu.Item>
-											<Menu.Item>
-												{({ active }) => (
-													<Link
 														href="#"
-														className={classNames(
-															active ? 'bg-gray-100' : '',
-															'block px-4 py-2 text-sm text-gray-700',
-															user ? '' : 'hidden'
-														)}
-													>
-														Settings
-													</Link>
-												)}
-											</Menu.Item>
-											<Menu.Item>
-												{({ active }) => (
-													<button
 														onClick={logOut}
 														className={classNames(
 															active ? 'bg-gray-100' : '',
@@ -143,8 +112,8 @@ export default function NavBar() {
 															user ? '' : 'hidden'
 														)}
 													>
-														Sign out
-													</button>
+														Sign Out
+													</Link>
 												)}
 											</Menu.Item>
 											<Menu.Item>
