@@ -104,7 +104,7 @@ export default function NavBar() {
 											<Menu.Item>
 												{({ active }) => (
 													<Link
-														href="#"
+														href="/"
 														onClick={logOut}
 														className={classNames(
 															active ? 'bg-gray-100' : '',
@@ -119,7 +119,7 @@ export default function NavBar() {
 											<Menu.Item>
 												{({ active }) => (
 													<Link
-														href="#"
+														href="/"
 														onClick={signInWithGoogle}
 														className={classNames(
 															active ? 'bg-gray-100' : '',
