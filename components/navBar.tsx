@@ -118,7 +118,8 @@ export default function NavBar() {
 											</Menu.Item>
 											<Menu.Item>
 												{({ active }) => (
-													<button
+													<Link
+														href="#"
 														onClick={signInWithGoogle}
 														className={classNames(
 															active ? 'bg-gray-100' : '',
@@ -126,8 +127,8 @@ export default function NavBar() {
 															user ? 'hidden' : ''
 														)}
 													>
-														Sign in
-													</button>
+														Sign In
+													</Link>
 												)}
 											</Menu.Item>
 										</Menu.Items>
