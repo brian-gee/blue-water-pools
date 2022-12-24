@@ -5,7 +5,7 @@ export default function Home() {
 	return (
 		<div className="">
 			<Head>
-				<title>Blue Water Pool</title>
+				<title>Blue Water Pools</title>
 				<meta name="description" content="The pool service for you" />
 				<link rel="icon" href="../public/favicon.ico" />
 			</Head>
