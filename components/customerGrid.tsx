@@ -123,6 +123,10 @@ export default function CustomerGrid() {
 	);
 
 	return (
+		<div>
+			<div className='flex justify-center text-2xl pb-5'>
+				Customer Manager
+			</div>
 		<ThemeProvider theme={darkTheme}>
 			<div style={{ height: 670, width: '100%' }}>
 				<DataGrid
@@ -138,5 +142,7 @@ export default function CustomerGrid() {
 				/>
 			</div>
 		</ThemeProvider>
+
+		</div>
 	);
 }
