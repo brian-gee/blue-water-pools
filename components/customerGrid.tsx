@@ -93,6 +93,7 @@ export default function CustomerGrid() {
 			},
 			{
 				field: 'actions',
+				headerName: 'Edit',
 				type: 'actions',
 				width: 80,
 				getActions: (params) => [
