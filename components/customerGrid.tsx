@@ -94,6 +94,7 @@ export default function CustomerGrid() {
 			},
 			{
 				field: 'actions',
+				headerName: 'Edit',
 				type: 'actions',
 				width: 80,
 				getActions: (params) => [
@@ -124,6 +125,10 @@ export default function CustomerGrid() {
 	);
 
 	return (
+		<div>
+			<div className='flex justify-center text-2xl pb-5'>
+				Customer Manager
+			</div>
 		<ThemeProvider theme={darkTheme}>
 				{console.log(rows)}
 			<div style={{ height: 670, width: '100%' }}>
@@ -140,5 +145,7 @@ export default function CustomerGrid() {
 				/>
 			</div>
 		</ThemeProvider>
+
+		</div>
 	);
 }

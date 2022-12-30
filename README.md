@@ -18,4 +18,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## App Image
 
-![pic-selected-221118-0044-14](https://user-images.githubusercontent.com/39035211/202629843-820d8d49-b54f-4bba-8b5b-cf46216a774e.png)
+![pic-selected-221229-1919-41](https://user-images.githubusercontent.com/39035211/210023144-85776ca4-e490-47dc-abf3-cb0b186e655f.png)

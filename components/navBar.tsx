@@ -10,9 +10,9 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import defaultPic from '../public/defaultPic.jpg';
 
 const navigation = [
-	{ name: 'Dashboard', href: '/', current: true },
-	{ name: 'Manage', href: '/manage', current: false },
-	{ name: 'Team', href: '/team', current: false },
+	{ name: 'Customer Manager', href: '/', current: true },
+	{ name: 'Add Customer', href: '/manage', current: false },
+	{ name: 'Our Team', href: '/team', current: false },
 ];
 
 function classNames(...classes: string[]) {
