@@ -1,25 +1,24 @@
-import { initializeApp } from "firebase/app";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { initializeApp } from 'firebase/app';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import {
   GoogleAuthProvider,
   signInWithRedirect,
   signOut,
   getAuth,
-} from "firebase/auth";
+} from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
-  databaseURL: process.env.NEXT_PUBLIC_DATA_BASEURL,
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
+  apiKey: 'AIzaSyA68sgrZe1-sZqq_RIowVtQp2LWa-W3AJQ',
+  authDomain: 'skclean-b04f2.firebaseapp.com',
+  databaseURL: 'https://skclean-b04f2-default-rtdb.firebaseio.com',
+  projectId: 'skclean-b04f2',
+  storageBucket: 'skclean-b04f2.appspot.com',
+  messagingSenderId: '887863824911',
+  appId: '1:887863824911:web:7370c8f69cc26ecb5f497a',
+  measurementId: 'G-X6NKTHZCBS',
 };
 
 export const app = initializeApp(firebaseConfig);
-
 
 export const AuthContextProvider = () => {
   const provider = new GoogleAuthProvider();
@@ -35,8 +34,8 @@ export const AuthContextProvider = () => {
   };
 
   const handleSignIn = () => {
-    user ? logOut : logOut
-  }
+    user ? logOut : logOut;
+  };
 
   return { user, signInWithGoogle, logOut, handleSignIn };
 };
