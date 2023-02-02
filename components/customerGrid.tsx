@@ -1,4 +1,4 @@
-import { dbRef } from '../firebase/initFirebase';
+import { dbRef, deleteCustomer } from '../firebase/initFirebase';
 import { onValue } from 'firebase/database';
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -35,8 +35,9 @@ export default function CustomerGrid() {
 	}, []);
 
 	const deleteUser = useCallback(
-		(id: string) => () => {
+		(id: number) => () => {
 			console.log(id);
+			deleteCustomer({id: id})
 		},
 		[]
 	);
@@ -129,6 +130,7 @@ export default function CustomerGrid() {
 				Customer Manager
 			</div>
 		<ThemeProvider theme={darkTheme}>
+				{console.log(rows)}
 			<div style={{ height: 670, width: '100%' }}>
 				<DataGrid
 					columns={columns}
